@@ -6,7 +6,7 @@ function TodoItem({ unit, onDeleteClick }) {
   return (
     <li className="todo-item">
       <p className="todo-item__unit">{unit.title}</p>
-      <Button event={onDeleteClick(unit.id)} variant="delete" />
+      <Button event={() => onDeleteClick(unit.id)} variant="delete" />
     </li>
   );
 }
