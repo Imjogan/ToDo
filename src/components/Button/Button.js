@@ -3,9 +3,9 @@ import closeImg from '../../images/close.svg';
 import dotsImg from '../../images/dott.svg';
 import deleteImg from '../../images/delete.svg';
 
-function Button({ text, variant }) {
+function Button({ text, variant, event }) {
   return (
-    <button
+    <button onClick={event}
       className={`button
         ${variant === 'text' ? 'button_variant_text' : null}
         ${variant === 'close' ? 'button_variant_close' : null}

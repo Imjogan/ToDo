@@ -14,7 +14,7 @@
   line-height: 100%;
   color: inherit;
   outline: none;
-  /* display: none; */
+  display: none;
 }
 
 .text-area_visible {

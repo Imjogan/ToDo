@@ -22,11 +22,15 @@ function TodoList() {
       });
   }, []);
 
+  const onDeleteClick = (id) => {
+    setUnits(units.filter(unit => unit.id !== id));
+  };
+
   return (
     <ul className="todo-list">
       {loading && <Loader />}
       {units.map((unit) => (
-        <TodoItem unit={unit} key={unit.id} />
+        <TodoItem unit={unit} onDeleteClick={onDeleteClick} key={unit.id} />
       ))}
     </ul>
   );

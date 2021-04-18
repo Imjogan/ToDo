@@ -1,12 +1,12 @@
 import './TextArea.css';
 
-function TextArea() {
+function TextArea({ visible }) {
   return (
     <textarea
       placeholder="Добавить задачу..."
       name="text-area"
-      className="text-area">
-    </textarea>
+      className={`text-area ${visible && 'text-area_visible'}`}
+    ></textarea>
   );
 }
 
