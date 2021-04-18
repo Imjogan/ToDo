@@ -1,0 +1,25 @@
+.main {
+  width: 100%;
+  background-color: #e0e3e6;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main__titile {
+  margin: 0 0 0 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 34px;
+}
+
+.main__container {
+  margin: 0 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__container:last-of-type {
+  margin: 0;
+}
