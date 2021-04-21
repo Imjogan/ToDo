@@ -16,7 +16,7 @@ function Main() {
   const [addButtonName, setAddButtonName] = useState('Добавить');
   const [selectedOption, setSelectedOption] = useState('В конец');
 
-  const optionsForCreate = ["В начало", "В конец"];
+  const optionsForCreate = ['В начало', 'В конец'];
 
   useEffect(() => {
     api
@@ -39,7 +39,7 @@ function Main() {
   const onDeleteClick = (id) => {
     setVisibleArea(false);
     setAreaValue('');
-    setUnits(units.filter(unit => unit.id !== id));
+    setUnits(units.filter((unit) => unit.id !== id));
   };
 
   function updateState(newTitle) {
@@ -61,24 +61,17 @@ function Main() {
     if (visibleArea && !updateItem) {
       areaValue.length > 0
         ? setUnits(
-          selectedOption === 'В конец' ?
-            [
-              ...units,
-              { title: areaValue, id: units.length + 1 },
-            ]
-            :
-            [
-              { title: areaValue, id: units.length + 1 },
-              ...units,
-            ]
-        )
+            selectedOption === 'В конец'
+              ? [...units, { title: areaValue, id: units.length + 1 }]
+              : [{ title: areaValue, id: units.length + 1 }, ...units]
+          )
         : setVisibleArea(false);
     } else if (visibleArea && updateItem) {
       setUnits(updateState(areaValue));
       setAddButtonName('Добавить');
     }
     setUpdateItem(false);
-  }
+  };
 
   const handleItemClick = (unit) => {
     setCloseVisible(true);
@@ -87,7 +80,7 @@ function Main() {
     setAreaValue(unit.title);
     setCurrentCard(unit);
     setUpdateItem(true);
-  }
+  };
 
   function onClickClose() {
     setAddButtonName('Добавить');
@@ -99,18 +92,25 @@ function Main() {
 
   const handleItemOnSelectClick = (selected) => {
     setSelectedOption(selected);
-  }
+  };
 
   return (
     <main className="main">
       <div className="main__container">
         <h2 className="main__titile">Задачи</h2>
       </div>
-      <TodoList units={units} loading={loading} onDeleteClick={onDeleteClick} handleItemClick={handleItemClick} />
+      <TodoList
+        units={units}
+        loading={loading}
+        onDeleteClick={onDeleteClick}
+        handleItemClick={handleItemClick}
+      />
       <textarea
         placeholder="Добавить задачу..."
         name="text-area"
-        className={`main__text-area ${visibleArea && 'main__text-area_visible'}`}
+        className={`main__text-area ${
+          visibleArea && 'main__text-area_visible'
+        }`}
         value={areaValue}
         onChange={handleChange}
         minLength="3"
@@ -118,7 +118,11 @@ function Main() {
       <div className="main__container">
         <Button event={onClickButtonAdd} variant="text" text={addButtonName} />
         <Button visible={isCloseVisible} event={onClickClose} variant="close" />
-        <Select options={optionsForCreate} selectedOption={selectedOption} selected={handleItemOnSelectClick} />
+        <Select
+          options={optionsForCreate}
+          selectedOption={selectedOption}
+          selected={handleItemOnSelectClick}
+        />
       </div>
     </main>
   );

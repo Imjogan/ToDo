@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import './Select.css';
 import menuImg from '../../images/dott.svg';
 
@@ -11,7 +11,7 @@ function Select({ options, selected, selectedOption }) {
   return (
     <section onMouseLeave={close} className="select">
       <div className="select__wrapper">
-        <div className="select__header" onMouseOver={open} >
+        <div className="select__header" onMouseOver={open}>
           <img className="select__menu" src={menuImg} alt="Меню" />
         </div>
         {isOpen && (
@@ -19,11 +19,15 @@ function Select({ options, selected, selectedOption }) {
             <div className="select__list">
               {options.map((option, i) => (
                 <li
-                  className={`select__list-item ${selectedOption === option && 'select__list-item__active'}`}
+                  className={`select__list-item ${
+                    selectedOption === option && 'select__list-item__active'
+                  }`}
                   onClick={() => {
                     selected(option);
                     setIsOpen(false);
-                  }} key={i}>
+                  }}
+                  key={i}
+                >
                   {option}
                 </li>
               ))}

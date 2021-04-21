@@ -4,12 +4,12 @@ import deleteImg from '../../images/delete.svg';
 
 function Button({ text, variant, event, visible }) {
   return (
-    <button onClick={event}
+    <button
+      onClick={event}
       className={`button
         ${variant === 'text' && 'button_variant_text button_visible'}
         ${variant === 'close' && `button_variant_close ${visible && 'button_visible'}`}
-        ${variant === 'delete' && 'button_variant_delete button_visible'}
-      `}
+        ${variant === 'delete' && 'button_variant_delete button_visible'}`}
       type="button"
     >
       {text}
