@@ -1,0 +1,76 @@
+.select {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  height: 34px;
+  width: 34px;
+}
+
+.select__wrapper {
+  width: 34px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.select__header {
+  cursor: pointer;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0.5;
+  width: 34px;
+  height: 34px;
+}
+
+.select__header:hover {
+  opacity: 1;
+}
+
+.select__container {
+  position: absolute;
+  z-index: 100;
+  width: 150px;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.select__list {
+  padding: 10px 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+  background: #f6f7f8;
+  box-sizing: border-box;
+  color: #3a4c5b;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.select__list-item {
+  text-align: center;
+  /* outline: 1px solid red; */
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.select__list-item:last-of-type {
+  margin-bottom: 0;
+}
+
+.select__list-item:hover {
+  color: #898d91;
+}
+
+.select__list-item__active {
+  color: #7ca65c;
+}
+
+.select__menu {
+  width: 34px;
+  height: auto;
+}

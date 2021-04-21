@@ -1,0 +1,48 @@
+.button {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  align-self: center;
+  display: none;
+}
+
+.button_visible {
+  display: block;
+}
+
+.button:hover {
+  opacity: 1;
+}
+
+.button_variant_text {
+  color: #fff;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  background-color: #7ca65c;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 35px;
+  opacity: 0.6;
+}
+
+.button_variant_close {
+  width: 25px;
+  height: 25px;
+  margin: 0 auto 0 3%;
+  opacity: 0.4;
+}
+
+.button_variant_delete {
+  width: 15px;
+  height: 15px;
+  opacity: 0.6;
+  position: absolute;
+  right: 1.5%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
