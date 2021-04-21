@@ -1,36 +1,14 @@
-import { useState, useEffect } from 'react';
 import './TodoList.css';
 import TodoItem from '../TodoItem/TodoItem';
 import Loader from '../Loader/Loader';
-import api from '../../utils/api';
 
-function TodoList() {
-  const [units, setUnits] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    api
-      .getUnits()
-      .then((data) => {
-        setTimeout(() => {
-          setUnits(data);
-          setLoading(false);
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  const onDeleteClick = (id) => {
-    setUnits(units.filter(unit => unit.id !== id));
-  };
+function TodoList({ units, loading, onDeleteClick, handleItemClick }) {
 
   return (
     <ul className="todo-list">
       {loading && <Loader />}
-      {units.map((unit) => (
-        <TodoItem unit={unit} onDeleteClick={onDeleteClick} key={unit.id} />
+      {units.map((unit, i) => (
+        <TodoItem unit={unit} onDeleteClick={onDeleteClick} handleItemClick={handleItemClick} key={i} />
       ))}
     </ul>
   );
