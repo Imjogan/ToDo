@@ -11,6 +11,7 @@ function Main() {
   const [loading, setLoading] = useState(true);
   const [updateItem, setUpdateItem] = useState(false);
   const [currentCard, setCurrentCard] = useState({});
+  const [addButtonName, setAddButtonName] = useState('Добавить');
 
   useEffect(() => {
     api
@@ -60,11 +61,13 @@ function Main() {
         : setVisibleArea(false);
     } else if (visibleArea && updateItem) {
       setUnits(updateState(areaValue));
+      setAddButtonName('Добавить');
     }
     setUpdateItem(false);
   }
 
   const handleItemClick = (unit) => {
+    setAddButtonName('Обновить');
     setVisibleArea(true);
     setAreaValue(unit.title);
     setCurrentCard(unit);
@@ -72,6 +75,7 @@ function Main() {
   }
 
   function onClickClose() {
+    setAddButtonName('Добавить');
     setVisibleArea(false);
     setAreaValue('');
     setUpdateItem(false);
@@ -93,7 +97,7 @@ function Main() {
         minLength="3"
       />
       <div className="main__container">
-        <Button event={onClickButtonAdd} variant="text" text="Добавить" />
+        <Button event={onClickButtonAdd} variant="text" text={addButtonName} />
         <Button event={onClickClose} variant="close" />
         <Button variant="menu" />
       </div>
