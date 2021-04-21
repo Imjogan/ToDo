@@ -6,6 +6,11 @@
   outline: none;
   cursor: pointer;
   align-self: center;
+  display: none;
+}
+
+.button_visible {
+  display: block;
 }
 
 .button:hover {
@@ -29,12 +34,6 @@
   width: 25px;
   height: 25px;
   margin: 0 auto 0 3%;
-  opacity: 0.4;
-}
-
-.button_variant_menu {
-  width: 34px;
-  height: 34px;
   opacity: 0.4;
 }
 

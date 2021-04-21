@@ -1,6 +1,7 @@
 import './Main.css';
 import TodoList from '../TodoList/TodoList';
 import Button from '../Button/Button';
+import Select from '../Select/Select';
 import api from '../../utils/api';
 import { useState, useEffect } from 'react';
 
@@ -10,8 +11,12 @@ function Main() {
   const [units, setUnits] = useState([]);
   const [loading, setLoading] = useState(true);
   const [updateItem, setUpdateItem] = useState(false);
+  const [isCloseVisible, setCloseVisible] = useState(false);
   const [currentCard, setCurrentCard] = useState({});
   const [addButtonName, setAddButtonName] = useState('Добавить');
+  const [selectedOption, setSelectedOption] = useState('В конец');
+
+  const optionsForCreate = ["В начало", "В конец"];
 
   useEffect(() => {
     api
@@ -20,7 +25,7 @@ function Main() {
         setTimeout(() => {
           setUnits(data);
           setLoading(false);
-        }, 2000);
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
@@ -50,14 +55,23 @@ function Main() {
   }
 
   const onClickButtonAdd = () => {
+    setCloseVisible(!isCloseVisible);
     setAreaValue('');
     setVisibleArea(!visibleArea);
     if (visibleArea && !updateItem) {
       areaValue.length > 0
-        ? setUnits([
-            ...units,
-            { title: areaValue, id: units.length + 1 },
-          ])
+        ? setUnits(
+          selectedOption === 'В конец' ?
+            [
+              ...units,
+              { title: areaValue, id: units.length + 1 },
+            ]
+            :
+            [
+              { title: areaValue, id: units.length + 1 },
+              ...units,
+            ]
+        )
         : setVisibleArea(false);
     } else if (visibleArea && updateItem) {
       setUnits(updateState(areaValue));
@@ -67,6 +81,7 @@ function Main() {
   }
 
   const handleItemClick = (unit) => {
+    setCloseVisible(true);
     setAddButtonName('Обновить');
     setVisibleArea(true);
     setAreaValue(unit.title);
@@ -79,13 +94,17 @@ function Main() {
     setVisibleArea(false);
     setAreaValue('');
     setUpdateItem(false);
+    setCloseVisible(false);
+  }
+
+  const handleItemOnSelectClick = (selected) => {
+    setSelectedOption(selected);
   }
 
   return (
     <main className="main">
       <div className="main__container">
         <h2 className="main__titile">Задачи</h2>
-        <Button variant="menu" />
       </div>
       <TodoList units={units} loading={loading} onDeleteClick={onDeleteClick} handleItemClick={handleItemClick} />
       <textarea
@@ -98,8 +117,8 @@ function Main() {
       />
       <div className="main__container">
         <Button event={onClickButtonAdd} variant="text" text={addButtonName} />
-        <Button event={onClickClose} variant="close" />
-        <Button variant="menu" />
+        <Button visible={isCloseVisible} event={onClickClose} variant="close" />
+        <Select options={optionsForCreate} selectedOption={selectedOption} selected={handleItemOnSelectClick} />
       </div>
     </main>
   );
