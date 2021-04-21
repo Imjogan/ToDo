@@ -4,10 +4,12 @@ import Button from '../Button/Button';
 function TodoItem({ unit, onDeleteClick, handleItemClick }) {
 
   return (
-    <li onClick={() => handleItemClick(unit)} className="todo-item">
-      <p className="todo-item__unit">{unit.title}</p>
+    <div className="wrapper">
+      <li onClick={() => handleItemClick(unit)} className="todo-item">
+        <p className="todo-item__unit">{unit.title}</p>
+      </li>
       <Button event={() => onDeleteClick(unit.id)} variant="delete" />
-    </li>
+    </div>
   );
 }
 

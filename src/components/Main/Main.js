@@ -31,6 +31,8 @@ function Main() {
   };
 
   const onDeleteClick = (id) => {
+    setVisibleArea(false);
+    setAreaValue('');
     setUnits(units.filter(unit => unit.id !== id));
   };
 

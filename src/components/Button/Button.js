@@ -7,10 +7,10 @@ function Button({ text, variant, event }) {
   return (
     <button onClick={event}
       className={`button
-        ${variant === 'text' ? 'button_variant_text' : null}
-        ${variant === 'close' ? 'button_variant_close' : null}
-        ${variant === 'menu' ? 'button_variant_menu' : null}
-        ${variant === 'delete' ? 'button_variant_delete' : null}
+        ${variant === 'text' && 'button_variant_text'}
+        ${variant === 'close' && 'button_variant_close'}
+        ${variant === 'menu' && 'button_variant_menu'}
+        ${variant === 'delete' && 'button_variant_delete'}
       `}
       type="button"
     >
