@@ -1,14 +1,14 @@
 import './Loader.css';
 
 const Loader = () => (
-  <div style={{ display: 'flex', justifyContent: 'center', margin: '.5rem' }}>
-    <div className="loader-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+  <div className="loader-ring">
+  <div className="loader-ring__main">
+    <div className="loader-ring__child" />
+    <div className="loader-ring__child" />
+    <div className="loader-ring__child" />
+    <div className="loader-ring__child" />
   </div>
+</div>
 );
 
 export default Loader;
